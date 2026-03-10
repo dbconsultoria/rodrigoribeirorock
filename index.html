@@ -3,311 +3,643 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rodrigo Ribeiro - Data Engineer Portfolio</title>
+  <title>Rodrigo Ribeiro – Blues Rock Guitar | EPK</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Barlow:wght@300;400;600&family=Barlow+Condensed:wght@700;900&display=swap" rel="stylesheet" />
   <style>
+    :root {
+      --black: #0a0a0a;
+      --dark: #111111;
+      --charcoal: #1e1e1e;
+      --mid: #2e2e2e;
+      --gray: #666666;
+      --silver: #999999;
+      --light: #cccccc;
+      --white: #f2f2f2;
+    }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: #333;
+      font-family: 'Barlow', sans-serif;
+      background-color: var(--black);
+      color: var(--light);
+      overflow-x: hidden;
     }
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-    .lang-bar { background-color: #1a252f; padding: 10px 0; }
-    .lang-bar .container { display: flex; justify-content: flex-end; gap: 10px; align-items: center; }
+    /* LANG BAR */
+    .lang-bar {
+      background: #050505;
+      border-bottom: 1px solid var(--mid);
+      padding: 10px 30px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      align-items: center;
+    }
     .lang-btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 7px 18px; border-radius: 6px; font-size: 0.95em; font-weight: 600;
-      cursor: pointer; border: 2px solid transparent; transition: all 0.25s;
-      background-color: #2c3e50; color: #ecf0f1;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8em;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 7px 18px;
+      border: 1px solid var(--mid);
+      background: transparent;
+      color: var(--silver);
+      cursor: pointer;
+      transition: all 0.25s;
+      display: inline-flex; align-items: center; gap: 7px;
     }
-    .lang-btn:hover { background-color: #3498db; border-color: #3498db; color: white; }
-    .lang-btn.active { border-color: #3498db; background-color: #3498db; color: white; }
-    .lang-btn .flag { font-size: 1.3em; }
+    .lang-btn:hover { border-color: var(--silver); color: var(--white); }
+    .lang-btn.active { background: var(--white); color: var(--black); border-color: var(--white); }
+    .lang-btn .flag { font-size: 1.2em; }
 
-    header {
-      background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-      color: white; padding: 60px 0; text-align: center;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background: var(--black);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      padding: 80px 20px 60px;
+      overflow: hidden;
     }
-    header h1 { font-size: 3em; margin-bottom: 10px; font-weight: 700; }
-    header p { font-size: 1.3em; margin-bottom: 5px; color: #ecf0f1; }
-    header .links { margin-top: 20px; }
-    header .links a { color: #3498db; margin: 0 15px; text-decoration: none; font-weight: 600; font-size: 1.1em; }
-    header .links a:hover { color: #5dade2; }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(ellipse, rgba(255,255,255,0.05) 0%, transparent 68%);
+      pointer-events: none;
+    }
+    .hero-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.82em;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: var(--silver);
+      margin-bottom: 22px;
+      animation: fadeUp 0.8s ease both;
+    }
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.2em, 10vw, 8em);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      animation: fadeUp 0.9s 0.1s ease both;
+    }
+    .hero-name span {
+      display: block;
+      font-weight: 700;
+      color: var(--silver);
+      font-size: 0.5em;
+      letter-spacing: 0.1em;
+      margin-top: 14px;
+      font-family: 'Barlow Condensed', sans-serif;
+    }
+    .hero-divider {
+      width: 80px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--silver), transparent);
+      margin: 38px auto;
+      animation: fadeUp 1s 0.2s ease both;
+    }
+    .hero-tagline {
+      font-size: 1em;
+      font-weight: 300;
+      color: var(--gray);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      animation: fadeUp 1s 0.3s ease both;
+    }
 
+    /* SOCIAL ICONS HERO */
+    .hero-socials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 40px;
+      justify-content: center;
+      animation: fadeUp 1s 0.4s ease both;
+    }
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border: 1px solid var(--mid);
+      color: var(--silver);
+      text-decoration: none;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.82em;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      transition: all 0.3s;
+    }
+    .social-link:hover {
+      background: var(--white);
+      color: var(--black);
+      border-color: var(--white);
+    }
+    .social-link svg { width: 16px; height: 16px; fill: currentColor; flex-shrink: 0; }
+
+    .hero-contact {
+      margin-top: 16px;
+      animation: fadeUp 1s 0.5s ease both;
+    }
+    .hero-contact a {
+      display: inline-block;
+      padding: 13px 36px;
+      border: 1px solid var(--charcoal);
+      color: var(--gray);
+      text-decoration: none;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8em;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      transition: all 0.3s;
+    }
+    .hero-contact a:hover { background: var(--white); color: var(--black); border-color: var(--white); }
+
+    /* NAV */
     nav {
-      background-color: #34495e; padding: 15px 0; text-align: center;
-      position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,10,10,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--mid);
+      padding: 17px 0;
+      text-align: center;
     }
-    nav a { color: white; margin: 0 20px; text-decoration: none; font-weight: 600; font-size: 1.1em; padding: 5px 10px; border-radius: 5px; }
-    nav a:hover { background-color: #3498db; }
-
-    section {
-      background-color: white; padding: 50px; margin: 30px auto;
-      border-radius: 15px; box-shadow: 0 8px 16px rgba(0,0,0,0.1); max-width: 1100px;
+    nav a {
+      font-family: 'Barlow Condensed', sans-serif;
+      color: var(--silver);
+      text-decoration: none;
+      margin: 0 20px;
+      font-size: 0.82em;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      transition: color 0.2s;
     }
-    h2 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px; margin-bottom: 25px; font-size: 2em; }
-    h3 { color: #34495e; margin-top: 25px; margin-bottom: 15px; font-size: 1.5em; }
-    .job-title { color: #2c3e50; font-weight: 600; font-size: 1.2em; margin-bottom: 10px; }
-    ul { margin-left: 20px; margin-top: 10px; }
-    ul li { margin-bottom: 10px; line-height: 1.8; }
+    nav a:hover { color: var(--white); }
 
-    .project-card {
-      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-      padding: 30px; margin-bottom: 30px; border-radius: 12px;
-      border-left: 5px solid #3498db; box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
+    /* SECTIONS */
+    .section-wrap {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 90px 40px;
     }
-    .project-card:hover { transform: translateY(-5px); box-shadow: 0 8px 16px rgba(0,0,0,0.2); }
-    .project-card h3 { color: #2c3e50; margin-top: 0; font-size: 1.8em; }
-    .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin: 15px 0; }
-    .tech-badge { background-color: #3498db; color: white; padding: 5px 12px; border-radius: 20px; font-size: 0.9em; font-weight: 600; }
-    .description { margin: 20px 0; line-height: 1.8; color: #2c3e50; }
-    .project-card .links { margin-top: 20px; }
-
-    .btn {
-      display: inline-block; padding: 12px 25px; margin: 5px 10px 5px 0;
-      background-color: #3498db; color: white; text-decoration: none;
-      border-radius: 5px; font-weight: 600; transition: all 0.3s;
+    .section-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72em;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 14px;
     }
-    .btn:hover { background-color: #2980b9; transform: translateY(-2px); }
-    .btn-secondary { background-color: #95a5a6; }
-    .btn-secondary:hover { background-color: #7f8c8d; }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2em, 5vw, 3.2em);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.05;
+      margin-bottom: 40px;
+    }
+    .section-divider {
+      width: 50px;
+      height: 1px;
+      background: var(--mid);
+      margin-bottom: 40px;
+    }
 
-    .highlight { background-color: #fff3cd; padding: 2px 5px; border-radius: 3px; font-weight: 600; }
+    /* BIO */
+    #bio { border-top: 1px solid var(--mid); }
+    .bio-text {
+      font-size: 1.2em;
+      font-weight: 300;
+      color: var(--light);
+      line-height: 1.9;
+      max-width: 700px;
+    }
 
+    /* VIDEOS */
+    #videos { border-top: 1px solid var(--mid); }
+    .video-group-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.78em;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 20px;
+      margin-top: 50px;
+    }
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 14px;
+    }
+    .video-card {
+      background: var(--charcoal);
+      border: 1px solid var(--mid);
+      padding: 22px 24px;
+      text-decoration: none;
+      color: var(--light);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .video-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--silver);
+      transform: scaleY(0);
+      transition: transform 0.3s;
+    }
+    .video-card:hover { background: var(--mid); border-color: var(--silver); }
+    .video-card:hover::before { transform: scaleY(1); }
+    .video-icon {
+      width: 36px; height: 36px;
+      background: var(--mid);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.3s;
+    }
+    .video-card:hover .video-icon { background: var(--silver); }
+    .video-icon svg { width: 14px; height: 14px; fill: var(--white); margin-left: 2px; }
+    .video-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1em;
+      letter-spacing: 0.05em;
+      color: var(--white);
+    }
+
+    /* MUSIC */
+    #music { border-top: 1px solid var(--mid); }
+    .spotify-block {
+      background: var(--charcoal);
+      border: 1px solid var(--mid);
+      padding: 36px 40px;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      max-width: 520px;
+      text-decoration: none;
+      color: var(--light);
+      transition: all 0.3s;
+    }
+    .spotify-block:hover { border-color: var(--silver); background: var(--mid); }
+    .spotify-icon { font-size: 2.6em; flex-shrink: 0; }
+    .spotify-text strong {
+      display: block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1em;
+      letter-spacing: 0.1em;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .spotify-text span { font-size: 0.85em; color: var(--gray); }
+
+    /* GEAR */
+    #gear { border-top: 1px solid var(--mid); }
+
+    /* CONTACT */
+    #contact { border-top: 1px solid var(--mid); }
+    .contact-email {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.3em, 3vw, 2em);
+      color: var(--white);
+      text-decoration: none;
+      border-bottom: 1px solid var(--mid);
+      padding-bottom: 6px;
+      transition: border-color 0.3s, color 0.3s;
+      display: inline-block;
+    }
+    .contact-email:hover { color: var(--white); border-color: var(--silver); }
+    .contact-socials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 36px;
+    }
+    .contact-social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 26px;
+      border: 1px solid var(--mid);
+      color: var(--silver);
+      text-decoration: none;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.82em;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      transition: all 0.3s;
+    }
+    .contact-social-link:hover { background: var(--white); color: var(--black); border-color: var(--white); }
+    .contact-social-link svg { width: 15px; height: 15px; fill: currentColor; }
+
+    /* GENERIC BUTTON */
+    .outline-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 32px;
+      border: 1px solid var(--mid);
+      color: var(--light);
+      text-decoration: none;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.88em;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      transition: all 0.3s;
+      margin-top: 10px;
+    }
+    .outline-btn:hover { background: var(--white); color: var(--black); border-color: var(--white); }
+    .outline-btn svg { width: 16px; height: 16px; fill: currentColor; flex-shrink: 0; }
+
+    /* FOOTER */
     footer {
-      background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-      color: white; text-align: center; padding: 30px 0; margin-top: 50px;
+      background: #050505;
+      border-top: 1px solid var(--mid);
+      text-align: center;
+      padding: 40px 20px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.78em;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gray);
     }
-    footer p { font-size: 1.1em; }
 
-    @media (max-width: 768px) {
-      header h1 { font-size: 2em; }
-      section { padding: 30px 20px; }
-      nav a { display: block; margin: 10px 0; }
-      .project-card { padding: 20px; }
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* SVG ICONS inline */
+    .ico-ig { display:inline-block; }
+    .ico-yt { display:inline-block; }
+
+    @media (max-width: 640px) {
+      .section-wrap { padding: 60px 24px; }
+      nav a { margin: 0 10px; font-size: 0.73em; }
+      .hero-socials { flex-direction: column; align-items: center; }
+      .video-grid { grid-template-columns: 1fr; }
+      .spotify-block { flex-direction: column; text-align: center; }
     }
   </style>
 </head>
 <body>
 
+  <!-- LANG BAR -->
   <div class="lang-bar">
-    <div class="container">
-      <button class="lang-btn active" id="btn-en" onclick="setLang('en')">
-        <span class="flag">&#127468;&#127463;</span> English
-      </button>
-      <button class="lang-btn" id="btn-pt" onclick="setLang('pt')">
-        <span class="flag">&#127463;&#127479;</span> Português
-      </button>
+    <button class="lang-btn active" id="btn-en" onclick="setLang('en')">
+      <span class="flag">🇬🇧</span> English
+    </button>
+    <button class="lang-btn" id="btn-pt" onclick="setLang('pt')">
+      <span class="flag">🇧🇷</span> Português
+    </button>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-label" data-i18n="epk-label">Electronic Press Kit</div>
+    <div class="hero-name">
+      Rodrigo<br>Ribeiro
+      <span data-i18n="hero-sub">Blues Rock Guitar</span>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-tagline" data-i18n="hero-tagline">Guitarist &amp; Composer · Since 1990</div>
+
+    <div class="hero-socials">
+      <a href="https://www.instagram.com/rodrigoribeirorock" target="_blank" class="social-link">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        @rodrigoribeirorock
+      </a>
+      <a href="https://www.youtube.com/@RodrigoRockChannel" target="_blank" class="social-link">
+        <svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+        @RodrigoRockChannel
+      </a>
+    </div>
+
+    <div class="hero-contact">
+      <a href="mailto:dbconsultoria@gmail.com">dbconsultoria@gmail.com</a>
     </div>
   </div>
 
-  <header>
-    <div class="container">
-      <h1>Rodrigo Ribeiro</h1>
-      <p id="h-title"></p>
-      <p style="margin-top: 10px; color: #bdc3c7;" id="h-subtitle"></p>
-      <div class="links">
-        <a href="https://www.linkedin.com/in/rodrigo-ribeiro-pro/" target="_blank">&#128279; LinkedIn</a>
-        <a href="https://github.com/dbconsultoria" target="_blank">&#128187; GitHub</a>
-      </div>
-    </div>
-  </header>
-
+  <!-- NAV -->
   <nav>
-    <a href="#experience" id="nav-exp"></a>
-    <a href="#education" id="nav-edu"></a>
-    <a href="#certifications" id="nav-cert"></a>
-    <a href="#portfolio">Portfolio</a>
+    <a href="#bio" data-i18n="nav-bio">Bio</a>
+    <a href="#videos" data-i18n="nav-videos">Videos</a>
+    <a href="#music" data-i18n="nav-music">Music</a>
+    <a href="#gear" data-i18n="nav-gear">Gear</a>
+    <a href="#contact" data-i18n="nav-contact">Contact</a>
   </nav>
 
-  <section id="experience">
-    <h2 id="exp-title"></h2>
-    <div class="job-title">Dell Technologies – Senior Data Engineer</div>
-    <ul id="exp-list"></ul>
-    <div class="job-title" style="margin-top: 30px;" id="prev-roles-title"></div>
-    <p id="prev-roles-desc"></p>
-  </section>
+  <!-- BIO -->
+  <div id="bio">
+    <div class="section-wrap">
+      <div class="section-label" data-i18n="bio-label">About</div>
+      <h2 class="section-title" data-i18n="bio-title">The Artist</h2>
+      <div class="section-divider"></div>
+      <p class="bio-text" data-i18n="bio-text">
+        Guitarist and composer since 1990, playing music, writing and performing. A lifelong devotion to the blues and the raw energy of rock — delivering tone, feel, and stories through the strings.
+      </p>
+    </div>
+  </div>
 
-  <section id="education">
-    <h2 id="edu-title"></h2>
-    <h3 id="edu-degree"></h3>
-    <p style="margin-top: 15px;" id="edu-dev"></p>
-    <ul id="edu-list"></ul>
-  </section>
+  <!-- VIDEOS -->
+  <div id="videos">
+    <div class="section-wrap">
+      <div class="section-label" data-i18n="vid-label">Watch</div>
+      <h2 class="section-title" data-i18n="vid-title">Videos</h2>
+      <div class="section-divider"></div>
 
-  <section id="certifications">
-    <h2 id="cert-title"></h2>
-    <ul>
-      <li><strong>Microsoft Certified: Azure Database Administrator Associate</strong> – DP-300 (2023)</li>
-      <li><strong>Microsoft Certified: Power BI Data Analyst Associate</strong> – PL-300 (2022)</li>
-      <li><strong>Microsoft Certified: Azure Data Engineer</strong> – DP-203 (2022)</li>
-      <li><strong id="cert-eng-label"></strong> <a href="https://internationalenglishtest.com/verify-certificate/7343410A8B-7343410AEC-734340E2B0" target="_blank" style="color: #3498db; font-weight: 600;">B2 Upper Intermediate English Level</a></li>
-    </ul>
-  </section>
-
-  <section id="portfolio">
-    <h2 id="port-title"></h2>
-
-    <div class="project-card">
-      <h3 id="spark-title"></h3>
-      <div class="tech-stack">
-        <span class="tech-badge">Apache Spark</span>
-        <span class="tech-badge">PySpark</span>
-        <span class="tech-badge">Docker</span>
-        <span class="tech-badge">MySQL</span>
-        <span class="tech-badge">Parquet</span>
-        <span class="tech-badge">SCD Type 2</span>
-        <span class="tech-badge">Star Schema</span>
+      <div class="video-group-title" data-i18n="vid-covers-label">Covers</div>
+      <div class="video-grid">
+        <a href="https://www.youtube.com/watch?v=xCZ8ISnHweI" target="_blank" class="video-card">
+          <div class="video-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="video-name">Overkill</div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=_nAeiYoqMK0" target="_blank" class="video-card">
+          <div class="video-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="video-name">Sleepwalk</div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=pyGQvJ449AA" target="_blank" class="video-card">
+          <div class="video-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="video-name">Hold On Loosely</div>
+        </a>
       </div>
-      <div class="description">
-        <p id="spark-intro"></p>
-        <ul id="spark-list"></ul>
-        <p style="margin-top: 15px;"><em id="spark-footer"></em></p>
+
+      <div class="video-group-title" style="margin-top:44px;" data-i18n="vid-originals-label">Original Songs</div>
+      <div class="video-grid">
+        <a href="https://www.youtube.com/watch?v=CvOEVD9yrNg" target="_blank" class="video-card">
+          <div class="video-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="video-name">Black Chopper</div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=4LNbs_6noYw" target="_blank" class="video-card">
+          <div class="video-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="video-name">Ibiraquera</div>
+        </a>
       </div>
-      <div class="links">
-        <a href="https://github.com/dbconsultoria/myspark" target="_blank" class="btn" id="btn-github"></a>
-        <a href="https://github.com/dbconsultoria/myspark#readme" target="_blank" class="btn btn-secondary" id="btn-docs"></a>
+
+      <div style="margin-top:36px;">
+        <a href="https://www.youtube.com/@RodrigoRockChannel" target="_blank" class="outline-btn">
+          <svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+          <span data-i18n="vid-channel-btn">Full Channel on YouTube</span>
+        </a>
       </div>
     </div>
+  </div>
 
-    <div class="project-card">
-      <h3>&#128202; Power BI Portfolio</h3>
-      <div class="tech-stack">
-        <span class="tech-badge">Power BI</span>
-        <span class="tech-badge">DAX</span>
-        <span class="tech-badge">Data Visualization</span>
-        <span class="tech-badge">Business Intelligence</span>
-      </div>
-      <div class="description">
-        <p id="pbi-desc"></p>
-      </div>
-      <div class="links">
-        <a href="https://sites.google.com/view/dse-servios-especializados/showcase?authuser=0" target="_blank" class="btn" id="btn-pbi"></a>
+  <!-- MUSIC -->
+  <div id="music">
+    <div class="section-wrap">
+      <div class="section-label" data-i18n="music-label">Stream</div>
+      <h2 class="section-title" data-i18n="music-title">Original Music</h2>
+      <div class="section-divider"></div>
+      <a href="https://open.spotify.com/artist/2pybInHdoDH9xp0bpfK4Jt?si=A_wR6X9gRQa3xse5gHjVcw" target="_blank" class="spotify-block">
+        <div class="spotify-icon">🎵</div>
+        <div class="spotify-text">
+          <strong data-i18n="music-spotify-title">Listen on Spotify</strong>
+          <span data-i18n="music-spotify-sub">Original compositions · Rodrigo Ribeiro</span>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- GEAR -->
+  <div id="gear">
+    <div class="section-wrap">
+      <div class="section-label" data-i18n="gear-label">Equipment</div>
+      <h2 class="section-title" data-i18n="gear-title">Gear</h2>
+      <div class="section-divider"></div>
+      <p style="color:var(--gray); font-weight:300; margin-bottom:28px;" data-i18n="gear-desc">
+        A curated list of guitars, amps, pedals and accessories.
+      </p>
+      <a href="https://www.mercadolivre.com.br/social/rodrigoribeirorock/lists/e3ff6951-9424-4af3-9e2a-0bcfc48e7813" target="_blank" class="outline-btn">
+        🎸 <span data-i18n="gear-btn">View Full Gear List</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div id="contact">
+    <div class="section-wrap">
+      <div class="section-label" data-i18n="contact-label">Get in Touch</div>
+      <h2 class="section-title" data-i18n="contact-title">Contact</h2>
+      <div class="section-divider"></div>
+      <p style="color:var(--gray); font-weight:300; margin-bottom:28px;" data-i18n="contact-desc">
+        Bookings, collaborations, and press inquiries:
+      </p>
+      <a href="mailto:dbconsultoria@gmail.com" class="contact-email">dbconsultoria@gmail.com</a>
+
+      <div class="contact-socials">
+        <a href="https://www.instagram.com/rodrigoribeirorock" target="_blank" class="contact-social-link">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          @rodrigoribeirorock
+        </a>
+        <a href="https://www.youtube.com/@RodrigoRockChannel" target="_blank" class="contact-social-link">
+          <svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+          @RodrigoRockChannel
+        </a>
       </div>
     </div>
-  </section>
+  </div>
 
+  <!-- FOOTER -->
   <footer>
-    <div class="container">
-      <p>&copy; 2025 Rodrigo Ribeiro | Senior Data Engineer</p>
-      <p style="margin-top: 10px; font-size: 0.9em;" id="footer-tagline"></p>
-    </div>
+    <span data-i18n="footer-text">© 2025 Rodrigo Ribeiro · Blues Rock Guitar · Electronic Press Kit</span>
   </footer>
 
   <script>
-    var translations = {
+    var T = {
       en: {
-        'h-title': 'Senior Data Engineer | Business Intelligence Specialist',
-        'h-subtitle': 'Building scalable data solutions with Apache Spark, Python & Cloud Technologies',
-        'nav-exp': 'Experience',
-        'nav-edu': 'Education',
-        'nav-cert': 'Certifications',
-        'exp-title': '&#128188; Professional Experience',
-        'exp-list': [
-          'Led a <span class="highlight">data engineering team</span>, designing robust ETL pipelines and lakehouse architectures',
-          'Architected and implemented data solutions using <span class="highlight">SQL Server, Python, Airflow, SSIS</span>, and <span class="highlight">Azure DevOps CI/CD</span>',
-          'Worked in <span class="highlight">Agile environments</span> delivering high-quality data products',
-          'Collaborated with <span class="highlight">Machine Learning teams</span> to streamline data integration and model deployment'
-        ],
-        'prev-roles-title': 'Previous Roles',
-        'prev-roles-desc': 'BI Specialist & Data Architect at Cresol, DBAplex | <strong>10+ years of experience</strong> in Business Intelligence, Data Warehousing, and Analytics',
-        'edu-title': '&#127891; Education',
-        'edu-degree': "Bachelor's Degree in Computer Science",
-        'edu-dev': 'Continuous professional development in:',
-        'edu-list': [
-          'Data Architecture & Modeling',
-          'Python for Data Engineering',
-          'Cloud Technologies (Azure, AWS)',
-          'Advanced Business Intelligence',
-          'Apache Spark & Distributed Computing'
-        ],
-        'cert-title': '&#127942; Certifications',
-        'cert-eng-label': 'International English Test:',
-        'port-title': '&#128640; Portfolio Projects',
-        'spark-title': '&#9889; Data Warehouse with Medallion Architecture & Apache Spark',
-        'spark-intro': '<strong>A complete enterprise-grade Data Warehouse</strong> implementation showcasing advanced data engineering techniques:',
-        'spark-list': [
-          '&#127959; <strong>Medallion Architecture:</strong> Bronze (raw) → Silver (cleaned) → Gold (business-ready)',
-          '&#128202; <strong>Dimensional Modeling:</strong> Star Schema with fact and dimension tables',
-          '&#128260; <strong>SCD Type 2:</strong> Full historical tracking of dimensional changes (rarely implemented in Spark projects)',
-          '&#9881; <strong>ETL Pipelines:</strong> Automated data processing with PySpark',
-          '&#128051; <strong>Containerized:</strong> Complete Docker environment for easy deployment',
-          '&#9989; <strong>Data Quality:</strong> Validation and testing across all layers'
-        ],
-        'spark-footer': 'This project demonstrates real-world data warehouse construction with best practices used in Fortune 500 companies.',
-        'btn-github': '&#128194; View on GitHub',
-        'btn-docs': '&#128214; Read Documentation',
-        'pbi-desc': 'Collection of interactive dashboards and reports demonstrating advanced Power BI capabilities, DAX calculations, and data storytelling for business insights.',
-        'btn-pbi': '&#128202; View Portfolio',
-        'footer-tagline': 'Building the future of data, one pipeline at a time &#128640;'
+        'epk-label':           'Electronic Press Kit',
+        'hero-sub':            'Blues Rock Guitar',
+        'hero-tagline':        'Guitarist &amp; Composer · Since 1990',
+        'nav-bio':             'Bio',
+        'nav-videos':          'Videos',
+        'nav-music':           'Music',
+        'nav-gear':            'Gear',
+        'nav-contact':         'Contact',
+        'bio-label':           'About',
+        'bio-title':           'The Artist',
+        'bio-text':            'Guitarist and composer since 1990, playing music, writing and performing. A lifelong devotion to the blues and the raw energy of rock — delivering tone, feel, and stories through the strings.',
+        'vid-label':           'Watch',
+        'vid-title':           'Videos',
+        'vid-covers-label':    'Covers',
+        'vid-originals-label': 'Original Songs',
+        'vid-channel-btn':     'Full Channel on YouTube',
+        'music-label':         'Stream',
+        'music-title':         'Original Music',
+        'music-spotify-title': 'Listen on Spotify',
+        'music-spotify-sub':   'Original compositions · Rodrigo Ribeiro',
+        'gear-label':          'Equipment',
+        'gear-title':          'Gear',
+        'gear-desc':           'A curated list of guitars, amps, pedals and accessories.',
+        'gear-btn':            'View Full Gear List',
+        'contact-label':       'Get in Touch',
+        'contact-title':       'Contact',
+        'contact-desc':        'Bookings, collaborations, and press inquiries:',
+        'footer-text':         '© 2025 Rodrigo Ribeiro · Blues Rock Guitar · Electronic Press Kit'
       },
       pt: {
-        'h-title': 'Engenheiro de Dados Sênior | Especialista em Business Intelligence',
-        'h-subtitle': 'Construindo soluções de dados escaláveis com Apache Spark, Python e Tecnologias Cloud',
-        'nav-exp': 'Experiência',
-        'nav-edu': 'Educação',
-        'nav-cert': 'Certificações',
-        'exp-title': '&#128188; Experiência Profissional',
-        'exp-list': [
-          'Liderou uma <span class="highlight">equipe de engenharia de dados</span>, projetando pipelines ETL robustos e arquiteturas lakehouse',
-          'Arquitetou e implementou soluções de dados usando <span class="highlight">SQL Server, Python, Airflow, SSIS</span> e <span class="highlight">Azure DevOps CI/CD</span>',
-          'Atuou em <span class="highlight">ambientes Ágeis</span> entregando produtos de dados de alta qualidade',
-          'Colaborou com <span class="highlight">equipes de Machine Learning</span> para otimizar a integração de dados e implantação de modelos'
-        ],
-        'prev-roles-title': 'Cargos Anteriores',
-        'prev-roles-desc': 'Especialista em BI & Arquiteto de Dados na Cresol, DBAplex | <strong>Mais de 10 anos de experiência</strong> em Business Intelligence, Data Warehousing e Analytics',
-        'edu-title': '&#127891; Educação',
-        'edu-degree': 'Bacharelado em Ciência da Computação',
-        'edu-dev': 'Desenvolvimento profissional contínuo em:',
-        'edu-list': [
-          'Arquitetura e Modelagem de Dados',
-          'Python para Engenharia de Dados',
-          'Tecnologias Cloud (Azure, AWS)',
-          'Business Intelligence Avançado',
-          'Apache Spark e Computação Distribuída'
-        ],
-        'cert-title': '&#127942; Certificações',
-        'cert-eng-label': 'Teste Internacional de Inglês:',
-        'port-title': '&#128640; Projetos do Portfólio',
-        'spark-title': '&#9889; Data Warehouse com Arquitetura Medallion e Apache Spark',
-        'spark-intro': '<strong>Um Data Warehouse completo de nível empresarial</strong> demonstrando técnicas avançadas de engenharia de dados:',
-        'spark-list': [
-          '&#127959; <strong>Arquitetura Medallion:</strong> Bronze (bruto) → Prata (limpo) → Ouro (pronto para negócio)',
-          '&#128202; <strong>Modelagem Dimensional:</strong> Star Schema com tabelas fato e dimensão',
-          '&#128260; <strong>SCD Type 2:</strong> Rastreamento histórico completo de mudanças dimensionais (raramente implementado em projetos Spark)',
-          '&#9881; <strong>Pipelines ETL:</strong> Processamento automatizado de dados com PySpark',
-          '&#128051; <strong>Containerizado:</strong> Ambiente Docker completo para fácil implantação',
-          '&#9989; <strong>Qualidade de Dados:</strong> Validação e testes em todas as camadas'
-        ],
-        'spark-footer': 'Este projeto demonstra a construção de data warehouse no mundo real com as melhores práticas utilizadas em empresas Fortune 500.',
-        'btn-github': '&#128194; Ver no GitHub',
-        'btn-docs': '&#128214; Ler Documentação',
-        'pbi-desc': 'Coleção de dashboards e relatórios interativos demonstrando capacidades avançadas do Power BI, cálculos DAX e narrativa de dados para insights de negócio.',
-        'btn-pbi': '&#128202; Ver Portfólio',
-        'footer-tagline': 'Construindo o futuro dos dados, um pipeline de cada vez &#128640;'
+        'epk-label':           'Kit de Imprensa Eletrônico',
+        'hero-sub':            'Guitarra Blues Rock',
+        'hero-tagline':        'Guitarrista &amp; Compositor · Desde 1990',
+        'nav-bio':             'Bio',
+        'nav-videos':          'Vídeos',
+        'nav-music':           'Música',
+        'nav-gear':            'Equipamentos',
+        'nav-contact':         'Contato',
+        'bio-label':           'Sobre',
+        'bio-title':           'O Artista',
+        'bio-text':            'Guitarrista e compositor desde 1990, tocando, compondo e se apresentando. Uma dedicação de vida inteira ao blues e à energia crua do rock — transmitindo feeling, timbre e histórias através das cordas.',
+        'vid-label':           'Assistir',
+        'vid-title':           'Vídeos',
+        'vid-covers-label':    'Covers',
+        'vid-originals-label': 'Músicas Originais',
+        'vid-channel-btn':     'Canal Completo no YouTube',
+        'music-label':         'Ouvir',
+        'music-title':         'Música Original',
+        'music-spotify-title': 'Ouça no Spotify',
+        'music-spotify-sub':   'Composições originais · Rodrigo Ribeiro',
+        'gear-label':          'Equipamentos',
+        'gear-title':          'Gear',
+        'gear-desc':           'Lista completa de guitarras, amplificadores, pedais e acessórios.',
+        'gear-btn':            'Ver Lista de Equipamentos',
+        'contact-label':       'Fale Comigo',
+        'contact-title':       'Contato',
+        'contact-desc':        'Shows, colaborações e imprensa:',
+        'footer-text':         '© 2025 Rodrigo Ribeiro · Guitarra Blues Rock · Kit de Imprensa Eletrônico'
       }
     };
 
     function setLang(lang) {
-      var t = translations[lang];
-      var listIds = ['exp-list', 'edu-list', 'spark-list'];
-
-      Object.keys(t).forEach(function(id) {
-        var el = document.getElementById(id);
-        if (!el) return;
-        if (listIds.indexOf(id) !== -1) {
-          el.innerHTML = t[id].map(function(item) { return '<li>' + item + '</li>'; }).join('');
-        } else {
-          el.innerHTML = t[id];
-        }
+      var t = T[lang];
+      document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n');
+        if (t[key] !== undefined) el.innerHTML = t[key];
       });
-
       document.getElementById('btn-en').classList.toggle('active', lang === 'en');
       document.getElementById('btn-pt').classList.toggle('active', lang === 'pt');
+      document.documentElement.lang = lang;
     }
 
     setLang('en');
