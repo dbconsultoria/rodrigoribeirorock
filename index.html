@@ -4,17 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rodrigo Ribeiro – Blues Rock Guitar | EPK</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Barlow:wght@300;400;600&family=Barlow+Condensed:wght@700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Barlow:wght@300;400&family=Barlow+Condensed:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --black: #0a0a0a;
-      --dark: #111111;
-      --charcoal: #1e1e1e;
-      --mid: #2e2e2e;
-      --gray: #666666;
-      --silver: #999999;
-      --light: #cccccc;
-      --white: #f2f2f2;
+      --black:   #080808;
+      --deep:    #111111;
+      --border:  #222222;
+      --mid:     #333333;
+      --gray:    #555555;
+      --silver:  #888888;
+      --light:   #aaaaaa;
+      --white:   #e8e8e8;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -22,385 +22,335 @@
 
     body {
       font-family: 'Barlow', sans-serif;
-      background-color: var(--black);
+      background: var(--black);
       color: var(--light);
       overflow-x: hidden;
     }
 
-    /* LANG BAR */
+    /* ── LANG BAR ── */
     .lang-bar {
-      background: #050505;
-      border-bottom: 1px solid var(--mid);
-      padding: 10px 30px;
+      background: var(--black);
+      border-bottom: 1px solid var(--border);
+      padding: 8px 32px;
       display: flex;
       justify-content: flex-end;
-      gap: 10px;
-      align-items: center;
+      gap: 8px;
     }
     .lang-btn {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.8em;
+      font-size: 0.68em;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      padding: 7px 18px;
-      border: 1px solid var(--mid);
+      padding: 5px 13px;
+      border: 1px solid var(--border);
       background: transparent;
-      color: var(--silver);
+      color: var(--gray);
       cursor: pointer;
-      transition: all 0.25s;
-      display: inline-flex; align-items: center; gap: 7px;
+      transition: all 0.2s;
+      display: inline-flex; align-items: center; gap: 6px;
     }
-    .lang-btn:hover { border-color: var(--silver); color: var(--white); }
-    .lang-btn.active { background: var(--white); color: var(--black); border-color: var(--white); }
-    .lang-btn .flag { font-size: 1.2em; }
+    .lang-btn:hover { color: var(--white); border-color: var(--mid); }
+    .lang-btn.active { color: var(--black); background: var(--white); border-color: var(--white); }
 
-    /* HERO */
-    .hero {
-      min-height: 100vh;
-      background: var(--black);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      position: relative;
-      padding: 80px 20px 60px;
-      overflow: hidden;
+    /* ── HEADER / HERO ── */
+    header {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 56px 40px 48px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 40px;
+      border-bottom: 1px solid var(--border);
+      animation: fadeUp 0.6s ease both;
     }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -30%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 800px;
-      height: 800px;
-      background: radial-gradient(ellipse, rgba(255,255,255,0.05) 0%, transparent 68%);
-      pointer-events: none;
-    }
-    .hero-label {
+
+    .hero-kicker {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.82em;
-      letter-spacing: 0.38em;
+      font-size: 0.68em;
+      letter-spacing: 0.34em;
       text-transform: uppercase;
-      color: var(--silver);
-      margin-bottom: 22px;
-      animation: fadeUp 0.8s ease both;
+      color: var(--gray);
+      margin-bottom: 14px;
     }
     .hero-name {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(3.2em, 10vw, 8em);
-      font-weight: 900;
+      font-family: 'EB Garamond', serif;
+      font-size: clamp(2em, 4.5vw, 3em);
+      font-weight: 400;
       color: var(--white);
-      line-height: 0.95;
-      letter-spacing: -0.02em;
-      animation: fadeUp 0.9s 0.1s ease both;
+      line-height: 1.08;
+      letter-spacing: 0.01em;
     }
-    .hero-name span {
+    .hero-name em {
       display: block;
-      font-weight: 700;
-      color: var(--silver);
-      font-size: 0.5em;
-      letter-spacing: 0.1em;
-      margin-top: 14px;
+      font-style: normal;
       font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.5em;
+      font-weight: 400;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--silver);
+      margin-top: 10px;
     }
-    .hero-divider {
-      width: 80px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--silver), transparent);
-      margin: 38px auto;
-      animation: fadeUp 1s 0.2s ease both;
+
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 9px;
+      padding-bottom: 2px;
     }
     .hero-tagline {
-      font-size: 1em;
+      font-size: 0.72em;
       font-weight: 300;
       color: var(--gray);
-      letter-spacing: 0.2em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      animation: fadeUp 1s 0.3s ease both;
+      text-align: right;
+      line-height: 1.7;
     }
-
-    /* SOCIAL ICONS HERO */
     .hero-socials {
       display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 40px;
-      justify-content: center;
-      animation: fadeUp 1s 0.4s ease both;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
+      margin-top: 4px;
     }
-    .social-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 24px;
-      border: 1px solid var(--mid);
+    .s-link {
+      display: inline-flex; align-items: center; gap: 6px;
       color: var(--silver);
       text-decoration: none;
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.82em;
-      letter-spacing: 0.18em;
+      font-size: 0.7em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      transition: all 0.3s;
+      transition: color 0.2s;
     }
-    .social-link:hover {
-      background: var(--white);
-      color: var(--black);
-      border-color: var(--white);
-    }
-    .social-link svg { width: 16px; height: 16px; fill: currentColor; flex-shrink: 0; }
-
-    .hero-contact {
-      margin-top: 16px;
-      animation: fadeUp 1s 0.5s ease both;
-    }
-    .hero-contact a {
-      display: inline-block;
-      padding: 13px 36px;
-      border: 1px solid var(--charcoal);
+    .s-link:hover { color: var(--white); }
+    .s-link svg { width: 12px; height: 12px; fill: currentColor; flex-shrink: 0; }
+    .hero-email {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.68em;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
       color: var(--gray);
       text-decoration: none;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.8em;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      transition: all 0.3s;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 2px;
+      margin-top: 6px;
+      transition: color 0.2s, border-color 0.2s;
     }
-    .hero-contact a:hover { background: var(--white); color: var(--black); border-color: var(--white); }
+    .hero-email:hover { color: var(--white); border-color: var(--silver); }
 
-    /* NAV */
+    /* ── NAV ── */
     nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(10,10,10,0.97);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--mid);
-      padding: 17px 0;
-      text-align: center;
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(8,8,8,0.97);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 820px; margin: 0 auto;
+      padding: 13px 40px;
+      display: flex; gap: 28px;
     }
     nav a {
       font-family: 'Barlow Condensed', sans-serif;
-      color: var(--silver);
+      color: var(--gray);
       text-decoration: none;
-      margin: 0 20px;
-      font-size: 0.82em;
-      letter-spacing: 0.26em;
+      font-size: 0.72em;
+      letter-spacing: 0.24em;
       text-transform: uppercase;
       transition: color 0.2s;
     }
     nav a:hover { color: var(--white); }
 
-    /* SECTIONS */
-    .section-wrap {
-      max-width: 960px;
+    /* ── SECTIONS ── */
+    .sec {
+      max-width: 820px;
       margin: 0 auto;
-      padding: 90px 40px;
+      padding: 58px 40px;
+      border-bottom: 1px solid var(--border);
     }
-    .section-label {
+    .sec-kicker {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.72em;
-      letter-spacing: 0.38em;
+      font-size: 0.65em;
+      letter-spacing: 0.32em;
       text-transform: uppercase;
       color: var(--gray);
-      margin-bottom: 14px;
+      margin-bottom: 8px;
     }
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2em, 5vw, 3.2em);
-      font-weight: 900;
+    .sec-title {
+      font-family: 'EB Garamond', serif;
+      font-size: clamp(1.5em, 3vw, 2.1em);
+      font-weight: 400;
       color: var(--white);
-      line-height: 1.05;
-      margin-bottom: 40px;
-    }
-    .section-divider {
-      width: 50px;
-      height: 1px;
-      background: var(--mid);
-      margin-bottom: 40px;
+      margin-bottom: 32px;
     }
 
-    /* BIO */
-    #bio { border-top: 1px solid var(--mid); }
+    /* ── BIO ── */
     .bio-text {
-      font-size: 1.2em;
+      font-size: 1em;
       font-weight: 300;
       color: var(--light);
       line-height: 1.9;
-      max-width: 700px;
+      max-width: 580px;
     }
 
-    /* VIDEOS */
-    #videos { border-top: 1px solid var(--mid); }
-    .video-group-title {
+    /* ── VIDEOS ── */
+    .vid-group-label {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.78em;
-      letter-spacing: 0.3em;
+      font-size: 0.65em;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
       color: var(--gray);
-      margin-bottom: 20px;
-      margin-top: 50px;
+      margin-bottom: 16px;
     }
-    .video-grid {
+    .vid-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 14px;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 12px;
+      margin-bottom: 36px;
     }
-    .video-card {
-      background: var(--charcoal);
-      border: 1px solid var(--mid);
-      padding: 22px 24px;
-      text-decoration: none;
-      color: var(--light);
+    .vid-embed {
       display: flex;
-      align-items: center;
-      gap: 16px;
-      transition: all 0.3s;
-      position: relative;
-      overflow: hidden;
-    }
-    .video-card::before {
-      content: '';
-      position: absolute;
-      left: 0; top: 0; bottom: 0;
-      width: 3px;
-      background: var(--silver);
-      transform: scaleY(0);
-      transition: transform 0.3s;
-    }
-    .video-card:hover { background: var(--mid); border-color: var(--silver); }
-    .video-card:hover::before { transform: scaleY(1); }
-    .video-icon {
-      width: 36px; height: 36px;
-      background: var(--mid);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-      transition: background 0.3s;
-    }
-    .video-card:hover .video-icon { background: var(--silver); }
-    .video-icon svg { width: 14px; height: 14px; fill: var(--white); margin-left: 2px; }
-    .video-name {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1em;
-      letter-spacing: 0.05em;
-      color: var(--white);
-    }
-
-    /* MUSIC */
-    #music { border-top: 1px solid var(--mid); }
-    .spotify-block {
-      background: var(--charcoal);
-      border: 1px solid var(--mid);
-      padding: 36px 40px;
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      max-width: 520px;
-      text-decoration: none;
-      color: var(--light);
-      transition: all 0.3s;
-    }
-    .spotify-block:hover { border-color: var(--silver); background: var(--mid); }
-    .spotify-icon { font-size: 2.6em; flex-shrink: 0; }
-    .spotify-text strong {
-      display: block;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.1em;
-      letter-spacing: 0.1em;
-      color: var(--white);
-      margin-bottom: 4px;
-    }
-    .spotify-text span { font-size: 0.85em; color: var(--gray); }
-
-    /* GEAR */
-    #gear { border-top: 1px solid var(--mid); }
-
-    /* CONTACT */
-    #contact { border-top: 1px solid var(--mid); }
-    .contact-email {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.3em, 3vw, 2em);
-      color: var(--white);
-      text-decoration: none;
-      border-bottom: 1px solid var(--mid);
-      padding-bottom: 6px;
-      transition: border-color 0.3s, color 0.3s;
-      display: inline-block;
-    }
-    .contact-email:hover { color: var(--white); border-color: var(--silver); }
-    .contact-socials {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 36px;
-    }
-    .contact-social-link {
-      display: inline-flex;
-      align-items: center;
+      flex-direction: column;
       gap: 8px;
-      padding: 13px 26px;
-      border: 1px solid var(--mid);
-      color: var(--silver);
-      text-decoration: none;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.82em;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      transition: all 0.3s;
     }
-    .contact-social-link:hover { background: var(--white); color: var(--black); border-color: var(--white); }
-    .contact-social-link svg { width: 15px; height: 15px; fill: currentColor; }
-
-    /* GENERIC BUTTON */
-    .outline-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 14px 32px;
-      border: 1px solid var(--mid);
-      color: var(--light);
-      text-decoration: none;
+    .vid-embed .ratio {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      background: var(--deep);
+      border: 1px solid var(--border);
+    }
+    .vid-embed .ratio iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .vid-embed-title {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.88em;
+      font-size: 0.72em;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--silver);
+    }
+    .vid-channel-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72em;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      transition: all 0.3s;
-      margin-top: 10px;
+      color: var(--gray);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+      margin-top: 4px;
     }
-    .outline-btn:hover { background: var(--white); color: var(--black); border-color: var(--white); }
-    .outline-btn svg { width: 16px; height: 16px; fill: currentColor; flex-shrink: 0; }
+    .vid-channel-link:hover { color: var(--white); border-color: var(--silver); }
+    .vid-channel-link svg { width: 12px; height: 12px; fill: currentColor; }
 
-    /* FOOTER */
-    footer {
-      background: #050505;
-      border-top: 1px solid var(--mid);
-      text-align: center;
-      padding: 40px 20px;
+    /* ── MUSIC ── */
+    .spotify-row {
+      display: inline-flex;
+      align-items: center;
+      gap: 20px;
+      padding: 22px 28px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--light);
+      transition: border-color 0.2s;
+    }
+    .spotify-row:hover { border-color: var(--silver); }
+    .spotify-icon-wrap { font-size: 1.8em; }
+    .spotify-meta strong {
+      display: block;
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.78em;
+      font-size: 0.88em;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 3px;
+    }
+    .spotify-meta span { font-size: 0.78em; color: var(--gray); font-weight: 300; }
+
+    /* ── OUTLINE BUTTON ── */
+    .outline-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72em;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray);
+      text-decoration: none;
+      border: 1px solid var(--border);
+      padding: 10px 20px;
+      transition: all 0.2s;
+    }
+    .outline-btn:hover { color: var(--white); border-color: var(--silver); }
+
+    /* ── CONTACT ── */
+    .contact-email {
+      display: inline-block;
+      font-family: 'EB Garamond', serif;
+      font-size: clamp(1.2em, 2.5vw, 1.7em);
+      color: var(--white);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 4px;
+      transition: border-color 0.2s;
+    }
+    .contact-email:hover { border-color: var(--silver); }
+    .contact-socials {
+      display: flex; gap: 16px; flex-wrap: wrap;
+      margin-top: 28px;
+    }
+    .cs-link {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7em;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gray);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .cs-link:hover { color: var(--white); border-color: var(--silver); }
+    .cs-link svg { width: 12px; height: 12px; fill: currentColor; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 32px 40px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.65em;
       letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--gray);
     }
 
-    /* ANIMATIONS */
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
+      from { opacity: 0; transform: translateY(16px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* SVG ICONS inline */
-    .ico-ig { display:inline-block; }
-    .ico-yt { display:inline-block; }
-
-    @media (max-width: 640px) {
-      .section-wrap { padding: 60px 24px; }
-      nav a { margin: 0 10px; font-size: 0.73em; }
-      .hero-socials { flex-direction: column; align-items: center; }
-      .video-grid { grid-template-columns: 1fr; }
-      .spotify-block { flex-direction: column; text-align: center; }
+    @media (max-width: 620px) {
+      header { grid-template-columns: 1fr; gap: 24px; padding: 40px 24px 36px; }
+      .hero-right { align-items: flex-start; }
+      .hero-tagline { text-align: left; }
+      .hero-socials { align-items: flex-start; }
+      .nav-inner { gap: 18px; padding: 12px 24px; flex-wrap: wrap; }
+      .sec { padding: 44px 24px; }
+      .vid-grid { grid-template-columns: 1fr; }
+      footer { padding: 28px 24px; }
     }
   </style>
 </head>
@@ -409,158 +359,151 @@
   <!-- LANG BAR -->
   <div class="lang-bar">
     <button class="lang-btn active" id="btn-en" onclick="setLang('en')">
-      <span class="flag">🇬🇧</span> English
+      <span>🇬🇧</span> EN
     </button>
     <button class="lang-btn" id="btn-pt" onclick="setLang('pt')">
-      <span class="flag">🇧🇷</span> Português
+      <span>🇧🇷</span> PT
     </button>
   </div>
 
-  <!-- HERO -->
-  <div class="hero">
-    <div class="hero-label" data-i18n="epk-label">Electronic Press Kit</div>
-    <div class="hero-name">
-      Rodrigo<br>Ribeiro
-      <span data-i18n="hero-sub">Blues Rock Guitar</span>
-    </div>
-    <div class="hero-divider"></div>
-    <div class="hero-tagline" data-i18n="hero-tagline">Guitarist &amp; Composer · Since 1990</div>
-
-    <div class="hero-socials">
-      <a href="https://www.instagram.com/rodrigoribeirorock" target="_blank" class="social-link">
-        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-        @rodrigoribeirorock
-      </a>
-      <a href="https://www.youtube.com/@RodrigoRockChannel" target="_blank" class="social-link">
-        <svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
-        @RodrigoRockChannel
-      </a>
-    </div>
-
-    <div class="hero-contact">
-      <a href="mailto:dbconsultoria@gmail.com">dbconsultoria@gmail.com</a>
-    </div>
-  </div>
-
-  <!-- NAV -->
-  <nav>
-    <a href="#bio" data-i18n="nav-bio">Bio</a>
-    <a href="#videos" data-i18n="nav-videos">Videos</a>
-    <a href="#music" data-i18n="nav-music">Music</a>
-    <a href="#gear" data-i18n="nav-gear">Gear</a>
-    <a href="#contact" data-i18n="nav-contact">Contact</a>
-  </nav>
-
-  <!-- BIO -->
-  <div id="bio">
-    <div class="section-wrap">
-      <div class="section-label" data-i18n="bio-label">About</div>
-      <h2 class="section-title" data-i18n="bio-title">The Artist</h2>
-      <div class="section-divider"></div>
-      <p class="bio-text" data-i18n="bio-text">
-        Guitarist and composer since 1990, playing music, writing and performing. A lifelong devotion to the blues and the raw energy of rock — delivering tone, feel, and stories through the strings.
-      </p>
-    </div>
-  </div>
-
-  <!-- VIDEOS -->
-  <div id="videos">
-    <div class="section-wrap">
-      <div class="section-label" data-i18n="vid-label">Watch</div>
-      <h2 class="section-title" data-i18n="vid-title">Videos</h2>
-      <div class="section-divider"></div>
-
-      <div class="video-group-title" data-i18n="vid-covers-label">Covers</div>
-      <div class="video-grid">
-        <a href="https://www.youtube.com/watch?v=xCZ8ISnHweI" target="_blank" class="video-card">
-          <div class="video-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <div class="video-name">Overkill</div>
-        </a>
-        <a href="https://www.youtube.com/watch?v=_nAeiYoqMK0" target="_blank" class="video-card">
-          <div class="video-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <div class="video-name">Sleepwalk</div>
-        </a>
-        <a href="https://www.youtube.com/watch?v=pyGQvJ449AA" target="_blank" class="video-card">
-          <div class="video-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <div class="video-name">Hold On Loosely</div>
-        </a>
-      </div>
-
-      <div class="video-group-title" style="margin-top:44px;" data-i18n="vid-originals-label">Original Songs</div>
-      <div class="video-grid">
-        <a href="https://www.youtube.com/watch?v=CvOEVD9yrNg" target="_blank" class="video-card">
-          <div class="video-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <div class="video-name">Black Chopper</div>
-        </a>
-        <a href="https://www.youtube.com/watch?v=4LNbs_6noYw" target="_blank" class="video-card">
-          <div class="video-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <div class="video-name">Ibiraquera</div>
-        </a>
-      </div>
-
-      <div style="margin-top:36px;">
-        <a href="https://www.youtube.com/@RodrigoRockChannel" target="_blank" class="outline-btn">
-          <svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
-          <span data-i18n="vid-channel-btn">Full Channel on YouTube</span>
-        </a>
+  <!-- HEADER -->
+  <header>
+    <div class="hero-left">
+      <div class="hero-kicker" data-i18n="epk-label">Electronic Press Kit</div>
+      <div class="hero-name">
+        Rodrigo Ribeiro
+        <em data-i18n="hero-sub">Blues Rock Guitar</em>
       </div>
     </div>
-  </div>
-
-  <!-- MUSIC -->
-  <div id="music">
-    <div class="section-wrap">
-      <div class="section-label" data-i18n="music-label">Stream</div>
-      <h2 class="section-title" data-i18n="music-title">Original Music</h2>
-      <div class="section-divider"></div>
-      <a href="https://open.spotify.com/artist/2pybInHdoDH9xp0bpfK4Jt?si=A_wR6X9gRQa3xse5gHjVcw" target="_blank" class="spotify-block">
-        <div class="spotify-icon">🎵</div>
-        <div class="spotify-text">
-          <strong data-i18n="music-spotify-title">Listen on Spotify</strong>
-          <span data-i18n="music-spotify-sub">Original compositions · Rodrigo Ribeiro</span>
-        </div>
-      </a>
-    </div>
-  </div>
-
-  <!-- GEAR -->
-  <div id="gear">
-    <div class="section-wrap">
-      <div class="section-label" data-i18n="gear-label">Equipment</div>
-      <h2 class="section-title" data-i18n="gear-title">Gear</h2>
-      <div class="section-divider"></div>
-      <p style="color:var(--gray); font-weight:300; margin-bottom:28px;" data-i18n="gear-desc">
-        A curated list of guitars, amps, pedals and accessories.
-      </p>
-      <a href="https://www.mercadolivre.com.br/social/rodrigoribeirorock/lists/e3ff6951-9424-4af3-9e2a-0bcfc48e7813" target="_blank" class="outline-btn">
-        🎸 <span data-i18n="gear-btn">View Full Gear List</span>
-      </a>
-    </div>
-  </div>
-
-  <!-- CONTACT -->
-  <div id="contact">
-    <div class="section-wrap">
-      <div class="section-label" data-i18n="contact-label">Get in Touch</div>
-      <h2 class="section-title" data-i18n="contact-title">Contact</h2>
-      <div class="section-divider"></div>
-      <p style="color:var(--gray); font-weight:300; margin-bottom:28px;" data-i18n="contact-desc">
-        Bookings, collaborations, and press inquiries:
-      </p>
-      <a href="mailto:dbconsultoria@gmail.com" class="contact-email">dbconsultoria@gmail.com</a>
-
-      <div class="contact-socials">
-        <a href="https://www.instagram.com/rodrigoribeirorock" target="_blank" class="contact-social-link">
+    <div class="hero-right">
+      <div class="hero-tagline" data-i18n="hero-tagline">Guitarist &amp; Composer<br>Since 1990</div>
+      <div class="hero-socials">
+        <a href="https://www.instagram.com/rodrigoribeirorock" target="_blank" class="s-link">
           <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
           @rodrigoribeirorock
         </a>
-        <a href="https://www.youtube.com/@RodrigoRockChannel" target="_blank" class="contact-social-link">
+        <a href="https://www.youtube.com/@RodrigoRockChannel" target="_blank" class="s-link">
           <svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
           @RodrigoRockChannel
         </a>
       </div>
+      <a href="mailto:dbconsultoria@gmail.com" class="hero-email">dbconsultoria@gmail.com</a>
     </div>
-  </div>
+  </header>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#bio"     data-i18n="nav-bio">Bio</a>
+      <a href="#videos"  data-i18n="nav-videos">Videos</a>
+      <a href="#music"   data-i18n="nav-music">Music</a>
+      <a href="#gear"    data-i18n="nav-gear">Gear</a>
+      <a href="#contact" data-i18n="nav-contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- BIO -->
+  <section id="bio" class="sec">
+    <div class="sec-kicker" data-i18n="bio-label">About</div>
+    <h2 class="sec-title" data-i18n="bio-title">The Artist</h2>
+    <p class="bio-text" data-i18n="bio-text">
+      Guitarist and composer since 1990, playing music, writing and performing. A lifelong devotion to the blues and the raw energy of rock — delivering tone, feel, and stories through the strings.
+    </p>
+  </section>
+
+  <!-- VIDEOS -->
+  <section id="videos" class="sec">
+    <div class="sec-kicker" data-i18n="vid-label">Watch</div>
+    <h2 class="sec-title" data-i18n="vid-title">Videos</h2>
+
+    <div class="vid-group-label" data-i18n="vid-covers-label">Covers</div>
+    <div class="vid-grid">
+      <div class="vid-embed">
+        <div class="ratio">
+          <iframe src="https://www.youtube.com/embed/xCZ8ISnHweI" allowfullscreen loading="lazy" title="Overkill"></iframe>
+        </div>
+        <div class="vid-embed-title">Overkill</div>
+      </div>
+      <div class="vid-embed">
+        <div class="ratio">
+          <iframe src="https://www.youtube.com/embed/_nAeiYoqMK0" allowfullscreen loading="lazy" title="Sleepwalk"></iframe>
+        </div>
+        <div class="vid-embed-title">Sleepwalk</div>
+      </div>
+      <div class="vid-embed">
+        <div class="ratio">
+          <iframe src="https://www.youtube.com/embed/pyGQvJ449AA" allowfullscreen loading="lazy" title="Hold On Loosely"></iframe>
+        </div>
+        <div class="vid-embed-title">Hold On Loosely</div>
+      </div>
+    </div>
+
+    <div class="vid-group-label" data-i18n="vid-originals-label">Original Songs</div>
+    <div class="vid-grid">
+      <div class="vid-embed">
+        <div class="ratio">
+          <iframe src="https://www.youtube.com/embed/CvOEVD9yrNg" allowfullscreen loading="lazy" title="Black Chopper"></iframe>
+        </div>
+        <div class="vid-embed-title">Black Chopper</div>
+      </div>
+      <div class="vid-embed">
+        <div class="ratio">
+          <iframe src="https://www.youtube.com/embed/4LNbs_6noYw" allowfullscreen loading="lazy" title="Ibiraquera"></iframe>
+        </div>
+        <div class="vid-embed-title">Ibiraquera</div>
+      </div>
+    </div>
+
+    <a href="https://www.youtube.com/@RodrigoRockChannel" target="_blank" class="vid-channel-link">
+      <svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+      <span data-i18n="vid-channel-btn">Full Channel on YouTube</span>
+    </a>
+  </section>
+
+  <!-- MUSIC -->
+  <section id="music" class="sec">
+    <div class="sec-kicker" data-i18n="music-label">Stream</div>
+    <h2 class="sec-title" data-i18n="music-title">Original Music</h2>
+    <a href="https://open.spotify.com/artist/2pybInHdoDH9xp0bpfK4Jt?si=A_wR6X9gRQa3xse5gHjVcw" target="_blank" class="spotify-row">
+      <div class="spotify-icon-wrap">🎵</div>
+      <div class="spotify-meta">
+        <strong data-i18n="music-spotify-title">Listen on Spotify</strong>
+        <span data-i18n="music-spotify-sub">Original compositions · Rodrigo Ribeiro</span>
+      </div>
+    </a>
+  </section>
+
+  <!-- GEAR -->
+  <section id="gear" class="sec">
+    <div class="sec-kicker" data-i18n="gear-label">Equipment</div>
+    <h2 class="sec-title" data-i18n="gear-title">Gear</h2>
+    <p style="color:var(--gray);font-weight:300;font-size:0.88em;margin-bottom:22px;line-height:1.7;" data-i18n="gear-desc">
+      A curated list of guitars, amps, pedals and accessories.
+    </p>
+    <a href="https://www.mercadolivre.com.br/social/rodrigoribeirorock/lists/e3ff6951-9424-4af3-9e2a-0bcfc48e7813" target="_blank" class="outline-btn">
+      🎸 <span data-i18n="gear-btn">View Full Gear List</span>
+    </a>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="sec">
+    <div class="sec-kicker" data-i18n="contact-label">Get in Touch</div>
+    <h2 class="sec-title" data-i18n="contact-title">Contact</h2>
+    <p style="color:var(--gray);font-weight:300;font-size:0.88em;margin-bottom:18px;line-height:1.7;" data-i18n="contact-desc">
+      Bookings, collaborations, and press inquiries:
+    </p>
+    <a href="mailto:dbconsultoria@gmail.com" class="contact-email">dbconsultoria@gmail.com</a>
+    <div class="contact-socials">
+      <a href="https://www.instagram.com/rodrigoribeirorock" target="_blank" class="cs-link">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        @rodrigoribeirorock
+      </a>
+      <a href="https://www.youtube.com/@RodrigoRockChannel" target="_blank" class="cs-link">
+        <svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+        @RodrigoRockChannel
+      </a>
+    </div>
+  </section>
 
   <!-- FOOTER -->
   <footer>
@@ -572,7 +515,7 @@
       en: {
         'epk-label':           'Electronic Press Kit',
         'hero-sub':            'Blues Rock Guitar',
-        'hero-tagline':        'Guitarist &amp; Composer · Since 1990',
+        'hero-tagline':        'Guitarist &amp; Composer<br>Since 1990',
         'nav-bio':             'Bio',
         'nav-videos':          'Videos',
         'nav-music':           'Music',
@@ -602,7 +545,7 @@
       pt: {
         'epk-label':           'Kit de Imprensa Eletrônico',
         'hero-sub':            'Guitarra Blues Rock',
-        'hero-tagline':        'Guitarrista &amp; Compositor · Desde 1990',
+        'hero-tagline':        'Guitarrista &amp; Compositor<br>Desde 1990',
         'nav-bio':             'Bio',
         'nav-videos':          'Vídeos',
         'nav-music':           'Música',
@@ -632,10 +575,9 @@
     };
 
     function setLang(lang) {
-      var t = T[lang];
       document.querySelectorAll('[data-i18n]').forEach(function(el) {
         var key = el.getAttribute('data-i18n');
-        if (t[key] !== undefined) el.innerHTML = t[key];
+        if (T[lang][key] !== undefined) el.innerHTML = T[lang][key];
       });
       document.getElementById('btn-en').classList.toggle('active', lang === 'en');
       document.getElementById('btn-pt').classList.toggle('active', lang === 'pt');
@@ -644,6 +586,5 @@
 
     setLang('en');
   </script>
-
 </body>
 </html>
