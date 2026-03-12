@@ -1,590 +1,272 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rodrigo Ribeiro – Blues Rock Guitar | EPK</title>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Barlow:wght@300;400&family=Barlow+Condensed:wght@400;600&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --black:   #080808;
-      --deep:    #111111;
-      --border:  #222222;
-      --mid:     #333333;
-      --gray:    #555555;
-      --silver:  #888888;
-      --light:   #aaaaaa;
-      --white:   #e8e8e8;
-    }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    body {
-      font-family: 'Barlow', sans-serif;
-      background: var(--black);
-      color: var(--light);
-      overflow-x: hidden;
-    }
+<title>Rodrigo Ribeiro | Blues Rock Guitar</title>
 
-    /* ── LANG BAR ── */
-    .lang-bar {
-      background: var(--black);
-      border-bottom: 1px solid var(--border);
-      padding: 8px 32px;
-      display: flex;
-      justify-content: flex-end;
-      gap: 8px;
-    }
-    .lang-btn {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.68em;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      padding: 5px 13px;
-      border: 1px solid var(--border);
-      background: transparent;
-      color: var(--gray);
-      cursor: pointer;
-      transition: all 0.2s;
-      display: inline-flex; align-items: center; gap: 6px;
-    }
-    .lang-btn:hover { color: var(--white); border-color: var(--mid); }
-    .lang-btn.active { color: var(--black); background: var(--white); border-color: var(--white); }
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-    /* ── HEADER / HERO ── */
-    header {
-      max-width: 820px;
-      margin: 0 auto;
-      padding: 56px 40px 48px;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: end;
-      gap: 40px;
-      border-bottom: 1px solid var(--border);
-      animation: fadeUp 0.6s ease both;
-    }
+<style>
 
-    .hero-kicker {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.68em;
-      letter-spacing: 0.34em;
-      text-transform: uppercase;
-      color: var(--gray);
-      margin-bottom: 14px;
-    }
-    .hero-name {
-      font-family: 'EB Garamond', serif;
-      font-size: clamp(2em, 4.5vw, 3em);
-      font-weight: 400;
-      color: var(--white);
-      line-height: 1.08;
-      letter-spacing: 0.01em;
-    }
-    .hero-name em {
-      display: block;
-      font-style: normal;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.5em;
-      font-weight: 400;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--silver);
-      margin-top: 10px;
-    }
+body{
+margin:0;
+background:#0b0b0b;
+color:#e6e6e6;
+font-family:Inter, sans-serif;
+line-height:1.6;
+}
 
-    .hero-right {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 9px;
-      padding-bottom: 2px;
-    }
-    .hero-tagline {
-      font-size: 0.72em;
-      font-weight: 300;
-      color: var(--gray);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      text-align: right;
-      line-height: 1.7;
-    }
-    .hero-socials {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 6px;
-      margin-top: 4px;
-    }
-    .s-link {
-      display: inline-flex; align-items: center; gap: 6px;
-      color: var(--silver);
-      text-decoration: none;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.7em;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-    .s-link:hover { color: var(--white); }
-    .s-link svg { width: 12px; height: 12px; fill: currentColor; flex-shrink: 0; }
-    .hero-email {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.68em;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--gray);
-      text-decoration: none;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 2px;
-      margin-top: 6px;
-      transition: color 0.2s, border-color 0.2s;
-    }
-    .hero-email:hover { color: var(--white); border-color: var(--silver); }
+.container{
+max-width:900px;
+margin:auto;
+padding:60px 24px;
+}
 
-    /* ── NAV ── */
-    nav {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(8,8,8,0.97);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-inner {
-      max-width: 820px; margin: 0 auto;
-      padding: 13px 40px;
-      display: flex; gap: 28px;
-    }
-    nav a {
-      font-family: 'Barlow Condensed', sans-serif;
-      color: var(--gray);
-      text-decoration: none;
-      font-size: 0.72em;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-    nav a:hover { color: var(--white); }
+h1{
+font-family:"EB Garamond", serif;
+font-size:54px;
+font-weight:400;
+margin-bottom:10px;
+}
 
-    /* ── SECTIONS ── */
-    .sec {
-      max-width: 820px;
-      margin: 0 auto;
-      padding: 58px 40px;
-      border-bottom: 1px solid var(--border);
-    }
-    .sec-kicker {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.65em;
-      letter-spacing: 0.32em;
-      text-transform: uppercase;
-      color: var(--gray);
-      margin-bottom: 8px;
-    }
-    .sec-title {
-      font-family: 'EB Garamond', serif;
-      font-size: clamp(1.5em, 3vw, 2.1em);
-      font-weight: 400;
-      color: var(--white);
-      margin-bottom: 32px;
-    }
+h2{
+font-family:"EB Garamond", serif;
+font-size:30px;
+font-weight:400;
+margin-bottom:20px;
+}
 
-    /* ── BIO ── */
-    .bio-text {
-      font-size: 1em;
-      font-weight: 300;
-      color: var(--light);
-      line-height: 1.9;
-      max-width: 580px;
-    }
+.subtitle{
+letter-spacing:3px;
+text-transform:uppercase;
+font-size:12px;
+color:#888;
+margin-bottom:40px;
+}
 
-    /* ── VIDEOS ── */
-    .vid-group-label {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.65em;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--gray);
-      margin-bottom: 16px;
-    }
-    .vid-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 12px;
-      margin-bottom: 36px;
-    }
-    .vid-embed {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .vid-embed .ratio {
-      position: relative;
-      width: 100%;
-      padding-bottom: 56.25%;
-      background: var(--deep);
-      border: 1px solid var(--border);
-    }
-    .vid-embed .ratio iframe {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-    .vid-embed-title {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.72em;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--silver);
-    }
-    .vid-channel-link {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.72em;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gray);
-      text-decoration: none;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 2px;
-      transition: color 0.2s, border-color 0.2s;
-      margin-top: 4px;
-    }
-    .vid-channel-link:hover { color: var(--white); border-color: var(--silver); }
-    .vid-channel-link svg { width: 12px; height: 12px; fill: currentColor; }
+header{
+padding:120px 24px 80px;
+text-align:center;
+border-bottom:1px solid #222;
+}
 
-    /* ── MUSIC ── */
-    .spotify-row {
-      display: inline-flex;
-      align-items: center;
-      gap: 20px;
-      padding: 22px 28px;
-      border: 1px solid var(--border);
-      text-decoration: none;
-      color: var(--light);
-      transition: border-color 0.2s;
-    }
-    .spotify-row:hover { border-color: var(--silver); }
-    .spotify-icon-wrap { font-size: 1.8em; }
-    .spotify-meta strong {
-      display: block;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.88em;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--white);
-      margin-bottom: 3px;
-    }
-    .spotify-meta span { font-size: 0.78em; color: var(--gray); font-weight: 300; }
+nav{
+border-bottom:1px solid #222;
+padding:15px;
+text-align:center;
+}
 
-    /* ── OUTLINE BUTTON ── */
-    .outline-btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.72em;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gray);
-      text-decoration: none;
-      border: 1px solid var(--border);
-      padding: 10px 20px;
-      transition: all 0.2s;
-    }
-    .outline-btn:hover { color: var(--white); border-color: var(--silver); }
+nav a{
+margin:0 15px;
+text-decoration:none;
+font-size:13px;
+letter-spacing:2px;
+text-transform:uppercase;
+color:#999;
+}
 
-    /* ── CONTACT ── */
-    .contact-email {
-      display: inline-block;
-      font-family: 'EB Garamond', serif;
-      font-size: clamp(1.2em, 2.5vw, 1.7em);
-      color: var(--white);
-      text-decoration: none;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 4px;
-      transition: border-color 0.2s;
-    }
-    .contact-email:hover { border-color: var(--silver); }
-    .contact-socials {
-      display: flex; gap: 16px; flex-wrap: wrap;
-      margin-top: 28px;
-    }
-    .cs-link {
-      display: inline-flex; align-items: center; gap: 7px;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.7em;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gray);
-      text-decoration: none;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 2px;
-      transition: color 0.2s, border-color 0.2s;
-    }
-    .cs-link:hover { color: var(--white); border-color: var(--silver); }
-    .cs-link svg { width: 12px; height: 12px; fill: currentColor; }
+nav a:hover{
+color:#fff;
+}
 
-    /* ── FOOTER ── */
-    footer {
-      border-top: 1px solid var(--border);
-      max-width: 820px;
-      margin: 0 auto;
-      padding: 32px 40px;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.65em;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gray);
-    }
+.bio{
+max-width:600px;
+color:#ccc;
+font-size:18px;
+}
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
+.section{
+border-bottom:1px solid #222;
+}
 
-    @media (max-width: 620px) {
-      header { grid-template-columns: 1fr; gap: 24px; padding: 40px 24px 36px; }
-      .hero-right { align-items: flex-start; }
-      .hero-tagline { text-align: left; }
-      .hero-socials { align-items: flex-start; }
-      .nav-inner { gap: 18px; padding: 12px 24px; flex-wrap: wrap; }
-      .sec { padding: 44px 24px; }
-      .vid-grid { grid-template-columns: 1fr; }
-      footer { padding: 28px 24px; }
-    }
-  </style>
+.video-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:25px;
+}
+
+.video iframe{
+width:100%;
+aspect-ratio:16/9;
+border:none;
+}
+
+.spotify{
+max-width:640px;
+}
+
+.button{
+display:inline-block;
+margin-top:30px;
+padding:12px 26px;
+border:1px solid #444;
+text-decoration:none;
+color:#ddd;
+font-size:13px;
+letter-spacing:2px;
+}
+
+.button:hover{
+background:#fff;
+color:#000;
+}
+
+footer{
+text-align:center;
+padding:40px;
+color:#777;
+font-size:13px;
+}
+
+.social{
+margin-top:20px;
+}
+
+.social a{
+margin:0 10px;
+color:#aaa;
+text-decoration:none;
+font-size:14px;
+}
+
+.social a:hover{
+color:#fff;
+}
+
+</style>
+
 </head>
+
 <body>
 
-  <!-- LANG BAR -->
-  <div class="lang-bar">
-    <button class="lang-btn active" id="btn-en" onclick="setLang('en')">
-      <span>🇬🇧</span> EN
-    </button>
-    <button class="lang-btn" id="btn-pt" onclick="setLang('pt')">
-      <span>🇧🇷</span> PT
-    </button>
-  </div>
+<header>
 
-  <!-- HEADER -->
-  <header>
-    <div class="hero-left">
-      <div class="hero-kicker" data-i18n="epk-label">Electronic Press Kit</div>
-      <div class="hero-name">
-        Rodrigo Ribeiro
-        <em data-i18n="hero-sub">Blues Rock Guitar</em>
-      </div>
-    </div>
-    <div class="hero-right">
-      <div class="hero-tagline" data-i18n="hero-tagline">Guitarist &amp; Composer<br>Since 1990</div>
-      <div class="hero-socials">
-        <a href="https://www.instagram.com/rodrigoribeirorock" target="_blank" class="s-link">
-          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-          @rodrigoribeirorock
-        </a>
-        <a href="https://www.youtube.com/@RodrigoRockChannel" target="_blank" class="s-link">
-          <svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
-          @RodrigoRockChannel
-        </a>
-      </div>
-      <a href="mailto:dbconsultoria@gmail.com" class="hero-email">dbconsultoria@gmail.com</a>
-    </div>
-  </header>
+<h1>Rodrigo Ribeiro</h1>
+<div class="subtitle">Blues Rock Guitar</div>
 
-  <!-- NAV -->
-  <nav>
-    <div class="nav-inner">
-      <a href="#bio"     data-i18n="nav-bio">Bio</a>
-      <a href="#videos"  data-i18n="nav-videos">Videos</a>
-      <a href="#music"   data-i18n="nav-music">Music</a>
-      <a href="#gear"    data-i18n="nav-gear">Gear</a>
-      <a href="#contact" data-i18n="nav-contact">Contact</a>
-    </div>
-  </nav>
+<div class="social">
+<a href="https://www.instagram.com/rodrigoribeirorock" target="_blank">Instagram</a>
+<a href="https://www.youtube.com/@RodrigoRockChannel" target="_blank">YouTube</a>
+</div>
 
-  <!-- BIO -->
-  <section id="bio" class="sec">
-    <div class="sec-kicker" data-i18n="bio-label">About</div>
-    <h2 class="sec-title" data-i18n="bio-title">The Artist</h2>
-    <p class="bio-text" data-i18n="bio-text">
-      Guitarist and composer since 1990, playing music, writing and performing. A lifelong devotion to the blues and the raw energy of rock — delivering tone, feel, and stories through the strings.
-    </p>
-  </section>
+</header>
 
-  <!-- VIDEOS -->
-  <section id="videos" class="sec">
-    <div class="sec-kicker" data-i18n="vid-label">Watch</div>
-    <h2 class="sec-title" data-i18n="vid-title">Videos</h2>
+<nav>
 
-    <div class="vid-group-label" data-i18n="vid-covers-label">Covers</div>
-    <div class="vid-grid">
-      <div class="vid-embed">
-        <div class="ratio">
-          <iframe src="https://www.youtube.com/embed/xCZ8ISnHweI" allowfullscreen loading="lazy" title="Overkill"></iframe>
-        </div>
-        <div class="vid-embed-title">Overkill</div>
-      </div>
-      <div class="vid-embed">
-        <div class="ratio">
-          <iframe src="https://www.youtube.com/embed/_nAeiYoqMK0" allowfullscreen loading="lazy" title="Sleepwalk"></iframe>
-        </div>
-        <div class="vid-embed-title">Sleepwalk</div>
-      </div>
-      <div class="vid-embed">
-        <div class="ratio">
-          <iframe src="https://www.youtube.com/embed/pyGQvJ449AA" allowfullscreen loading="lazy" title="Hold On Loosely"></iframe>
-        </div>
-        <div class="vid-embed-title">Hold On Loosely</div>
-      </div>
-    </div>
+<a href="#bio">Bio</a>
+<a href="#videos">Videos</a>
+<a href="#music">Music</a>
+<a href="#contact">Contact</a>
 
-    <div class="vid-group-label" data-i18n="vid-originals-label">Original Songs</div>
-    <div class="vid-grid">
-      <div class="vid-embed">
-        <div class="ratio">
-          <iframe src="https://www.youtube.com/embed/CvOEVD9yrNg" allowfullscreen loading="lazy" title="Black Chopper"></iframe>
-        </div>
-        <div class="vid-embed-title">Black Chopper</div>
-      </div>
-      <div class="vid-embed">
-        <div class="ratio">
-          <iframe src="https://www.youtube.com/embed/4LNbs_6noYw" allowfullscreen loading="lazy" title="Ibiraquera"></iframe>
-        </div>
-        <div class="vid-embed-title">Ibiraquera</div>
-      </div>
-    </div>
+</nav>
 
-    <a href="https://www.youtube.com/@RodrigoRockChannel" target="_blank" class="vid-channel-link">
-      <svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
-      <span data-i18n="vid-channel-btn">Full Channel on YouTube</span>
-    </a>
-  </section>
+<section id="bio" class="section">
 
-  <!-- MUSIC -->
-  <section id="music" class="sec">
-    <div class="sec-kicker" data-i18n="music-label">Stream</div>
-    <h2 class="sec-title" data-i18n="music-title">Original Music</h2>
-    <a href="https://open.spotify.com/artist/2pybInHdoDH9xp0bpfK4Jt?si=A_wR6X9gRQa3xse5gHjVcw" target="_blank" class="spotify-row">
-      <div class="spotify-icon-wrap">🎵</div>
-      <div class="spotify-meta">
-        <strong data-i18n="music-spotify-title">Listen on Spotify</strong>
-        <span data-i18n="music-spotify-sub">Original compositions · Rodrigo Ribeiro</span>
-      </div>
-    </a>
-  </section>
+<div class="container">
 
-  <!-- GEAR -->
-  <section id="gear" class="sec">
-    <div class="sec-kicker" data-i18n="gear-label">Equipment</div>
-    <h2 class="sec-title" data-i18n="gear-title">Gear</h2>
-    <p style="color:var(--gray);font-weight:300;font-size:0.88em;margin-bottom:22px;line-height:1.7;" data-i18n="gear-desc">
-      A curated list of guitars, amps, pedals and accessories.
-    </p>
-    <a href="https://www.mercadolivre.com.br/social/rodrigoribeirorock/lists/e3ff6951-9424-4af3-9e2a-0bcfc48e7813" target="_blank" class="outline-btn">
-      🎸 <span data-i18n="gear-btn">View Full Gear List</span>
-    </a>
-  </section>
+<h2>About</h2>
 
-  <!-- CONTACT -->
-  <section id="contact" class="sec">
-    <div class="sec-kicker" data-i18n="contact-label">Get in Touch</div>
-    <h2 class="sec-title" data-i18n="contact-title">Contact</h2>
-    <p style="color:var(--gray);font-weight:300;font-size:0.88em;margin-bottom:18px;line-height:1.7;" data-i18n="contact-desc">
-      Bookings, collaborations, and press inquiries:
-    </p>
-    <a href="mailto:dbconsultoria@gmail.com" class="contact-email">dbconsultoria@gmail.com</a>
-    <div class="contact-socials">
-      <a href="https://www.instagram.com/rodrigoribeirorock" target="_blank" class="cs-link">
-        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-        @rodrigoribeirorock
-      </a>
-      <a href="https://www.youtube.com/@RodrigoRockChannel" target="_blank" class="cs-link">
-        <svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
-        @RodrigoRockChannel
-      </a>
-    </div>
-  </section>
+<p class="bio">
+Guitarist and composer since 1990. Influenced by blues, classic rock and instrumental guitar traditions. 
+My work blends expressive guitar tone, melodic phrasing and rock energy through covers and original compositions.
+</p>
 
-  <!-- FOOTER -->
-  <footer>
-    <span data-i18n="footer-text">© 2025 Rodrigo Ribeiro · Blues Rock Guitar · Electronic Press Kit</span>
-  </footer>
+</div>
 
-  <script>
-    var T = {
-      en: {
-        'epk-label':           'Electronic Press Kit',
-        'hero-sub':            'Blues Rock Guitar',
-        'hero-tagline':        'Guitarist &amp; Composer<br>Since 1990',
-        'nav-bio':             'Bio',
-        'nav-videos':          'Videos',
-        'nav-music':           'Music',
-        'nav-gear':            'Gear',
-        'nav-contact':         'Contact',
-        'bio-label':           'About',
-        'bio-title':           'The Artist',
-        'bio-text':            'Guitarist and composer since 1990, playing music, writing and performing. A lifelong devotion to the blues and the raw energy of rock — delivering tone, feel, and stories through the strings.',
-        'vid-label':           'Watch',
-        'vid-title':           'Videos',
-        'vid-covers-label':    'Covers',
-        'vid-originals-label': 'Original Songs',
-        'vid-channel-btn':     'Full Channel on YouTube',
-        'music-label':         'Stream',
-        'music-title':         'Original Music',
-        'music-spotify-title': 'Listen on Spotify',
-        'music-spotify-sub':   'Original compositions · Rodrigo Ribeiro',
-        'gear-label':          'Equipment',
-        'gear-title':          'Gear',
-        'gear-desc':           'A curated list of guitars, amps, pedals and accessories.',
-        'gear-btn':            'View Full Gear List',
-        'contact-label':       'Get in Touch',
-        'contact-title':       'Contact',
-        'contact-desc':        'Bookings, collaborations, and press inquiries:',
-        'footer-text':         '© 2025 Rodrigo Ribeiro · Blues Rock Guitar · Electronic Press Kit'
-      },
-      pt: {
-        'epk-label':           'Kit de Imprensa Eletrônico',
-        'hero-sub':            'Guitarra Blues Rock',
-        'hero-tagline':        'Guitarrista &amp; Compositor<br>Desde 1990',
-        'nav-bio':             'Bio',
-        'nav-videos':          'Vídeos',
-        'nav-music':           'Música',
-        'nav-gear':            'Equipamentos',
-        'nav-contact':         'Contato',
-        'bio-label':           'Sobre',
-        'bio-title':           'O Artista',
-        'bio-text':            'Guitarrista e compositor desde 1990, tocando, compondo e se apresentando. Uma dedicação de vida inteira ao blues e à energia crua do rock — transmitindo feeling, timbre e histórias através das cordas.',
-        'vid-label':           'Assistir',
-        'vid-title':           'Vídeos',
-        'vid-covers-label':    'Covers',
-        'vid-originals-label': 'Músicas Originais',
-        'vid-channel-btn':     'Canal Completo no YouTube',
-        'music-label':         'Ouvir',
-        'music-title':         'Música Original',
-        'music-spotify-title': 'Ouça no Spotify',
-        'music-spotify-sub':   'Composições originais · Rodrigo Ribeiro',
-        'gear-label':          'Equipamentos',
-        'gear-title':          'Gear',
-        'gear-desc':           'Lista completa de guitarras, amplificadores, pedais e acessórios.',
-        'gear-btn':            'Ver Lista de Equipamentos',
-        'contact-label':       'Fale Comigo',
-        'contact-title':       'Contato',
-        'contact-desc':        'Shows, colaborações e imprensa:',
-        'footer-text':         '© 2025 Rodrigo Ribeiro · Guitarra Blues Rock · Kit de Imprensa Eletrônico'
-      }
-    };
+</section>
 
-    function setLang(lang) {
-      document.querySelectorAll('[data-i18n]').forEach(function(el) {
-        var key = el.getAttribute('data-i18n');
-        if (T[lang][key] !== undefined) el.innerHTML = T[lang][key];
-      });
-      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-      document.getElementById('btn-pt').classList.toggle('active', lang === 'pt');
-      document.documentElement.lang = lang;
-    }
+<section id="videos" class="section">
 
-    setLang('en');
-  </script>
+<div class="container">
+
+<h2>Videos</h2>
+
+<div class="video-grid">
+
+<div class="video">
+<iframe src="https://www.youtube.com/embed/xCZ8ISnHweI" allowfullscreen loading="lazy"></iframe>
+</div>
+
+<div class="video">
+<iframe src="https://www.youtube.com/embed/_nAeiYoqMK0" allowfullscreen loading="lazy"></iframe>
+</div>
+
+<div class="video">
+<iframe src="https://www.youtube.com/embed/pyGQvJ449AA" allowfullscreen loading="lazy"></iframe>
+</div>
+
+<div class="video">
+<iframe src="https://www.youtube.com/embed/CvOEVD9yrNg" allowfullscreen loading="lazy"></iframe>
+</div>
+
+<div class="video">
+<iframe src="https://www.youtube.com/embed/4LNbs_6noYw" allowfullscreen loading="lazy"></iframe>
+</div>
+
+</div>
+
+<a class="button" href="https://www.youtube.com/@RodrigoRockChannel" target="_blank">
+Full YouTube Channel
+</a>
+
+</div>
+
+</section>
+
+<section id="music" class="section">
+
+<div class="container">
+
+<h2>Original Music</h2>
+
+<div class="spotify">
+
+<iframe
+style="border-radius:12px"
+src="https://open.spotify.com/embed/artist/2pybInHdoDH9xp0bpfK4Jt?utm_source=generator&theme=0"
+width="100%"
+height="352"
+frameBorder="0"
+allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+loading="lazy">
+</iframe>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="contact" class="section">
+
+<div class="container">
+
+<h2>Contact</h2>
+
+<p>
+Bookings, collaborations and press inquiries:
+</p>
+
+<p>
+<a class="button" href="mailto:dbconsultoria@gmail.com">
+dbconsultoria@gmail.com
+</a>
+</p>
+
+</div>
+
+</section>
+
+<footer>
+
+© Rodrigo Ribeiro · Blues Rock Guitar
+
+</footer>
+
 </body>
+
 </html>
